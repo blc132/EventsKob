@@ -13,7 +13,7 @@ namespace EventsKob.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201806232132171_Event and Genre"; }
+            get { return "201806232158352_Event and Genre"; }
         }
         
         string IMigrationMetadata.Source
