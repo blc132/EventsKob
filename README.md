@@ -1,0 +1,2 @@
+# EventsKob
+simple MVC webapp
