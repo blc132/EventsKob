@@ -6,9 +6,11 @@ namespace EventsKob.Models
     public class Event
     {
         public int Id { get; set; }
+        
+        public ApplicationUser EventMaker { get; set; }
 
         [Required]
-        public ApplicationUser EventMaker { get; set; }
+        public string EventMakerId { get; set; }
 
         public DateTime DateTime { get; set; }
 
@@ -16,7 +18,10 @@ namespace EventsKob.Models
         [StringLength(255)]
         public string Venue { get; set; }
 
-        [Required]
         public Genre Genre { get; set; }
+
+        [Required]
+        public int GenreId { get; set; }
+
     }
 }
