@@ -34,9 +34,9 @@ namespace EventsKob.Controllers
             var genre = _context.Genres.Single(g => g.Id == viewModel.Genre);
             var eventToAdd = new Event
             {
-                EventMaker = eventMaker,
+                EventMakerId = eventMakerId,
                 DateTime = DateTime.Parse($"{viewModel.Date} {viewModel.Time}"),
-                Genre = genre,
+                GenreId = viewModel.Genre,
                 Venue = viewModel.Venue,
             };
             _context.Events.Add((eventToAdd));
