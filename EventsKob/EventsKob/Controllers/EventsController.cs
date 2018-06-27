@@ -16,15 +16,6 @@ namespace EventsKob.Controllers
             _context = new ApplicationDbContext();
         }
 
-        public ActionResult Create()
-        {
-            var viewModel = new EventFormViewModel
-            {
-                Genres = _context.Genres.ToList()
-            };
-            return View(viewModel);
-        }
-
         [Authorize]
         [HttpPost]
         public ActionResult Create(EventFormViewModel viewModel)
@@ -42,6 +33,15 @@ namespace EventsKob.Controllers
             _context.Events.Add((eventToAdd));
             _context.SaveChanges();
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Create()
+        {
+            var viewModel = new EventFormViewModel
+            {
+                Genres = _context.Genres.ToList()
+            };
+            return View(viewModel);
         }
     }
 }
