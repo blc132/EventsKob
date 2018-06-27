@@ -20,13 +20,17 @@ namespace EventsKob.Controllers
         [HttpPost]
         public ActionResult Create(EventFormViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                viewModel.Genres = _context.Genres.ToList();
+                return View("Create", viewModel);
+            }
+
             var eventMakerId = User.Identity.GetUserId();
-            var eventMaker = _context.Users.Single(e => e.Id == eventMakerId);
-            var genre = _context.Genres.Single(g => g.Id == viewModel.Genre);
             var eventToAdd = new Event
             {
                 EventMakerId = eventMakerId,
-                DateTime = viewModel.DateTime,
+                DateTime = viewModel.GetDateTime(),
                 GenreId = viewModel.Genre,
                 Venue = viewModel.Venue,
             };
