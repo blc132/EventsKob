@@ -11,6 +11,7 @@ namespace EventsKob.ViewModels
         public string Venue { get; set; }
 
         [Required]
+        [FutureDate(ErrorMessage = "Date needs to be future")]
         public string Date { get; set; }
 
         [Required]
