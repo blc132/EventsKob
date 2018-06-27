@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using EventsKob.Models;
+using EventsKob.ViewModels.Validators;
 
 namespace EventsKob.ViewModels
 {
@@ -15,6 +16,7 @@ namespace EventsKob.ViewModels
         public string Date { get; set; }
 
         [Required]
+        [ValidTime(ErrorMessage =  "Incorrect time format")]
         public string Time { get; set; }
 
         [Required]
