@@ -35,7 +35,7 @@ namespace EventsKob.Controllers
             var eventToAdd = new Event
             {
                 EventMakerId = eventMakerId,
-                DateTime = DateTime.Parse($"{viewModel.Date} {viewModel.Time}"),
+                DateTime = viewModel.DateTime,
                 GenreId = viewModel.Genre,
                 Venue = viewModel.Venue,
             };

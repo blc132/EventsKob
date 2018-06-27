@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using EventsKob.Models;
 
 namespace EventsKob.ViewModels
@@ -10,5 +11,10 @@ namespace EventsKob.ViewModels
         public string Time { get; set; }
         public int Genre { get; set; }
         public IEnumerable<Genre> Genres { get; set; }
+
+        public DateTime DateTime
+        {
+            get { return DateTime.Parse($"{Date} {Time}"); }
+        }
     }
-}
+    }
