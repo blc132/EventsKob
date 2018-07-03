@@ -65,4 +65,12 @@ footer {
     border-radius: 11px;
 }
 
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    background-color: #333333;
+}
+
+a:hover, a:focus {
+    color: #333333;
+}
+
 
