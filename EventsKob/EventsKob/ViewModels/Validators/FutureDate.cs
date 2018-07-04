@@ -19,7 +19,7 @@ namespace EventsKob.ViewModels
                 CultureInfo.CurrentCulture,
                 DateTimeStyles.None,
                 out dateTime);
-
+            Console.WriteLine(Convert.ToString(dateTime));
             return (isValid && dateTime > DateTime.Now);
         }
     }
