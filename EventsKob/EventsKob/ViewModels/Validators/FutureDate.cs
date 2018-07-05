@@ -12,14 +12,7 @@ namespace EventsKob.ViewModels
     {
         public override bool IsValid(object value)
         {
-            DateTime dateTime;
-            var isValid = DateTime.TryParseExact(
-                Convert.ToString(value),
-                "d MMM yyyy",
-                CultureInfo.CurrentCulture,
-                DateTimeStyles.None,
-                out dateTime);
-            Console.WriteLine(Convert.ToString(dateTime));
+            var isValid = DateTime.TryParse(value.ToString(), out var dateTime);
             return (isValid && dateTime > DateTime.Now);
         }
     }
