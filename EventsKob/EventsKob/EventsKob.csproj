@@ -216,18 +216,37 @@
     <Compile Include="Migrations\201806251359291_AddForeignKeyPropertiesToEvent.Designer.cs">
       <DependentUpon>201806251359291_AddForeignKeyPropertiesToEvent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808282201136_AddNameToApplicationUser.cs" />
+    <Compile Include="Migrations\201808282201136_AddNameToApplicationUser.Designer.cs">
+      <DependentUpon>201808282201136_AddNameToApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="ViewModels\Manage\FactorViewModel.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="ViewModels\Manage\ManageLoginsViewModel.cs" />
+    <Compile Include="ViewModels\Manage\ConfigureTwoFactorViewModel.cs" />
+    <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
+    <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\EventFormViewModel.cs" />
+    <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />
+    <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
+    <Compile Include="ViewModels\Account\ForgotViewModel.cs" />
+    <Compile Include="ViewModels\Account\LoginViewModel.cs" />
+    <Compile Include="ViewModels\Account\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
+    <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
+    <Compile Include="ViewModels\Manage\IndexViewModel.cs" />
     <Compile Include="ViewModels\Validators\FutureDate.cs" />
     <Compile Include="ViewModels\Validators\ValidTime.cs" />
+    <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -319,6 +338,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806251359291_AddForeignKeyPropertiesToEvent.resx">
       <DependentUpon>201806251359291_AddForeignKeyPropertiesToEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808282201136_AddNameToApplicationUser.resx">
+      <DependentUpon>201808282201136_AddNameToApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
