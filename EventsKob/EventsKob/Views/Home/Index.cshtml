@@ -3,9 +3,27 @@
     ViewBag.Title = "Home Page";
 }
 
-<ul>
-    @foreach (var _event in Model)
-    {
-        <li>@_event.DateTime - @_event.EventMaker.UserName</li>
-    }
-</ul>
+        <table class="table">
+            <tr>
+                <th> Lp.</th>
+                <th> Name: </th>
+                <th> Genre: </th>
+                <th> EventMaker: </th>
+                <th> Date: </th>
+            </tr>
+            
+            @{
+                var i = 1;
+                foreach (var _event in Model)
+                {
+                    <tr>
+                        <td>@(i + 1)</td>
+                        <td>@_event.Venue</td>
+                        <td>@_event.Genre.Name</td>
+                        <td>@_event.EventMaker.UserName</td>
+                        <td>@_event.DateTime.ToShortDateString()</td>
+                    </tr>
+                    i++;
+                }
+            }
+        </table>

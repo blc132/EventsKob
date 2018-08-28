@@ -19,6 +19,7 @@ namespace EventsKob.Controllers
         {
             var upcomingEvents = _context.Events
                 .Include(e => e.EventMaker)
+                .Include(g => g.Genre)
                 .Where(g => g.DateTime > DateTime.Now);
             return View(upcomingEvents);
         }
