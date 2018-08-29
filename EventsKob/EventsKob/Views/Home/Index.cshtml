@@ -3,27 +3,52 @@
     ViewBag.Title = "Home Page";
 }
 
-        <table class="table">
-            <tr>
-                <th> Lp.</th>
-                <th> Name: </th>
-                <th> Genre: </th>
-                <th> EventMaker: </th>
-                <th> Date: </th>
-            </tr>
-            
-            @{
-                var i = 1;
-                foreach (var _event in Model)
-                {
-                    <tr>
-                        <td>@(i + 1)</td>
-                        <td>@_event.Venue</td>
-                        <td>@_event.Genre.Name</td>
-                        <td>@_event.EventMaker.Name</td>
-                        <td>@_event.DateTime.ToShortDateString()</td>
-                    </tr>
-                    i++;
-                }
+<ul class="events">
+    @foreach (var eventModel in Model)
+    {
+        <li>
+            <div class="date">
+                <div class="month">
+                    @eventModel.DateTime.ToString("MMM")
+                </div>
+                <div class="day">
+                    @eventModel.DateTime.ToString("d ")
+                </div>
+            </div>
+            <div class="details">
+                <span class="eventMaker">
+                    @eventModel.EventMaker.Name
+                </span>
+                <span class="genre">
+                    @eventModel.Genre.Name
+                </span>
+            </div>
+        </li>
+
+    }
+</ul>
+
+
+@*<table class="table">
+        <tr>
+            <th> Lp.</th>
+            <th> Name: </th>
+            <th> Genre: </th>
+            <th> EventMaker: </th>
+            <th> Date: </th>
+        </tr>
+        @{
+            var i = 1;
+            foreach (var _event in Model)
+            {
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>@_event.Venue</td>
+                    <td>@_event.Genre.Name</td>
+                    <td>@_event.EventMaker.Name</td>
+                    <td>@_event.DateTime.ToShortDateString()</td>
+                </tr>
+                i++;
             }
-        </table>
+        }
+    </table>*@
