@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using EventsKob.Models;
@@ -47,6 +48,27 @@ namespace EventsKob.Controllers
                 Genres = _context.Genres.ToList()
             };
             return View(viewModel);
+        }
+
+        [Authorize]
+        public ActionResult Attending()
+        {
+            var userId = User.Identity.GetUserId();
+            var events = _context.Attendances
+                .Where(a => a.AttendeeId == userId)
+                .Select(e => e.Event)
+                .Include(e => e.EventMaker)
+                .Include(e => e.Genre)
+                .ToList();
+
+            var model = new EventsViewModel()
+            {
+                UpcomingEvents = events,
+                ShowActions = User.Identity.IsAuthenticated,
+                Heading = "Events I'm attending"
+            };
+
+            return View("Events", model);
         }
     }
 }

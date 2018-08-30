@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Data.Entity;
 using EventsKob.Models;
+using EventsKob.ViewModels;
 
 namespace EventsKob.Controllers
 {
@@ -21,7 +22,15 @@ namespace EventsKob.Controllers
                 .Include(e => e.EventMaker)
                 .Include(g => g.Genre)
                 .Where(g => g.DateTime > DateTime.Now);
-            return View(upcomingEvents);
+
+            var model = new EventsViewModel()
+            {
+                UpcomingEvents = upcomingEvents,
+                ShowActions = User.Identity.IsAuthenticated,
+                Heading = "Upcoming Events"
+            };
+
+            return View("Events", model);
         }
 
         public ActionResult About()

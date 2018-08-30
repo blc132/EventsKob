@@ -1,10 +1,10 @@
-﻿@model IEnumerable<EventsKob.Models.Event>
+﻿@model  EventsKob.ViewModels.EventsViewModel
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "EventsKob";
 }
-
-<ul class="events">
-    @foreach (var eventModel in Model)
+<h1>@Model.Heading</h1>
+<ul class="events voffset4">
+    @foreach (var eventModel in Model.UpcomingEvents)
     {
         <li>
             <div class="date">
@@ -18,12 +18,19 @@
             <div class="details">
                 <span class="eventMaker">
                     @eventModel.EventMaker.Name
-                    <button data-eventMaker-id ="@eventModel.EventMakerId" class="btn btn-default btn-xs js-toggle-follow">Follow</button>
+                    @if (@Model.ShowActions)
+                    {
+                        <button data-eventMaker-id="@eventModel.EventMakerId" class="btn btn-default btn-xs js-toggle-follow">Follow</button>
+
+                    }
                 </span>
                 <span class="genre">
                     @eventModel.Genre.Name
                 </span>
-                <button data-event-id ="@eventModel.Id" class="btn btn-default btn-sm js-toggle-attendance">Going ?</button>
+                @if (@Model.ShowActions)
+                {
+                    <button data-event-id="@eventModel.Id" class="btn btn-default btn-sm js-toggle-attendance">Going ?</button>
+                }
             </div>
         </li>
 
@@ -33,31 +40,31 @@
 @section scripts
 {
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $(".js-toggle-attendance").click(function (e) {
-                var button=$(e.target);
-                $.post("/api/attendances", { eventId: button.attr("data-event-id")})
-                    .done(function() {
+                var button = $(e.target);
+                $.post("/api/attendances", { eventId: button.attr("data-event-id") })
+                    .done(function () {
                         button
                             .removeClass("btn-default")
                             .addClass("btn-secondary")
                             .text("Going");
                     })
-                    .fail(function() {
+                    .fail(function () {
                         alert("Something failed!");
                     });
             });
 
             $(".js-toggle-follow").click(function (e) {
-                var button=$(e.target);
-                $.post("/api/follows", { eventMakerId: button.attr("data-eventMaker-id")})
-                    .done(function() {
+                var button = $(e.target);
+                $.post("/api/follows", { eventMakerId: button.attr("data-eventMaker-id") })
+                    .done(function () {
                         button
                             .removeClass("btn-default")
                             .addClass("btn-secondary")
                             .text("Following");
                     })
-                    .fail(function() {
+                    .fail(function () {
                         alert("Something failed!");
                     });
             });
