@@ -64,8 +64,8 @@ footer {
     }
 
 .btn {
-    font-size: 17px;
-    padding: 7px 20px;
+/*    font-size: 17px;*/
+/*    padding: 7px 20px;*/
     -ms-border-radius: 11px;
     border-radius: 11px;
 }
@@ -90,7 +90,7 @@ a:hover, a:focus {
     }
 
         .events > li .date {
-            background: grey;
+            padding-top: 10px;   
             color: white;
             text-align: center;
             width: 60px;

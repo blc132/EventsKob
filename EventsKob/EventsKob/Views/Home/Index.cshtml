@@ -22,33 +22,30 @@
                 <span class="genre">
                     @eventModel.Genre.Name
                 </span>
+                <button data-event-id ="@eventModel.Id" class="btn btn-default btn-sm js-toggle-attendance">Going ?</button>
             </div>
         </li>
 
     }
 </ul>
 
-
-@*<table class="table">
-        <tr>
-            <th> Lp.</th>
-            <th> Name: </th>
-            <th> Genre: </th>
-            <th> EventMaker: </th>
-            <th> Date: </th>
-        </tr>
-        @{
-            var i = 1;
-            foreach (var _event in Model)
-            {
-                <tr>
-                    <td>@(i + 1)</td>
-                    <td>@_event.Venue</td>
-                    <td>@_event.Genre.Name</td>
-                    <td>@_event.EventMaker.Name</td>
-                    <td>@_event.DateTime.ToShortDateString()</td>
-                </tr>
-                i++;
-            }
-        }
-    </table>*@
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $(".js-toggle-attendance").click(function (e) {
+                var button=$(e.target);
+                $.post("/api/attendances", { eventId: button.attr("data-event-id")})
+                    .done(function() {
+                        button
+                            .removeClass("btn-default")
+                            .addClass("btn-secondary")
+                            .text("Going");
+                    })
+                    .fail(function() {
+                        alert("Something failed!");
+                    });
+            });
+        });
+    </script>
+}
