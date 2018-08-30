@@ -14,10 +14,10 @@ namespace EventsKob.Models
 
         [Key]
         [Column(Order = 1)]
-        public int FollowerId { get; set; }
+        public string FollowerId { get; set; }
 
         [Key]
         [Column(Order = 2)]
-        public int EventMakerId { get; set; }
+        public string EventMakerId { get; set; }
     }
 }

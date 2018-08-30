@@ -13,7 +13,7 @@ namespace EventsKob.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201808300859316_AddFollow"; }
+            get { return "201808301050318_AddFollow"; }
         }
         
         string IMigrationMetadata.Source

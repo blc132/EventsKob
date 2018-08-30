@@ -202,9 +202,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AttendancesController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\FollowsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Dtos\AttendanceDto.cs" />
+    <Compile Include="Dtos\FollowsDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -236,9 +238,9 @@
     <Compile Include="Migrations\201808292011417_AddAttendance.Designer.cs">
       <DependentUpon>201808292011417_AddAttendance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808300859316_AddFollow.cs" />
-    <Compile Include="Migrations\201808300859316_AddFollow.Designer.cs">
-      <DependentUpon>201808300859316_AddFollow.cs</DependentUpon>
+    <Compile Include="Migrations\201808301050318_AddFollow.cs" />
+    <Compile Include="Migrations\201808301050318_AddFollow.Designer.cs">
+      <DependentUpon>201808301050318_AddFollow.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Attendance.cs" />
@@ -367,8 +369,8 @@
     <EmbeddedResource Include="Migrations\201808292011417_AddAttendance.resx">
       <DependentUpon>201808292011417_AddAttendance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808300859316_AddFollow.resx">
-      <DependentUpon>201808300859316_AddFollow.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808301050318_AddFollow.resx">
+      <DependentUpon>201808301050318_AddFollow.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

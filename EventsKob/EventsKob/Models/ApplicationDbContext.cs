@@ -27,6 +27,11 @@ namespace EventsKob.Models
                 .WithMany()
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Follow>()
+                .HasRequired(f => f.EventMaker)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
             base.OnModelCreating(modelBuilder);
         }
     }

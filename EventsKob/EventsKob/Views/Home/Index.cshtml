@@ -18,6 +18,7 @@
             <div class="details">
                 <span class="eventMaker">
                     @eventModel.EventMaker.Name
+                    <button data-eventMaker-id ="@eventModel.EventMakerId" class="btn btn-default btn-xs js-toggle-follow">Follow</button>
                 </span>
                 <span class="genre">
                     @eventModel.Genre.Name
@@ -46,6 +47,21 @@
                         alert("Something failed!");
                     });
             });
+
+            $(".js-toggle-follow").click(function (e) {
+                var button=$(e.target);
+                $.post("/api/follows", { eventMakerId: button.attr("data-eventMaker-id")})
+                    .done(function() {
+                        button
+                            .removeClass("btn-default")
+                            .addClass("btn-secondary")
+                            .text("Following");
+                    })
+                    .fail(function() {
+                        alert("Something failed!");
+                    });
+            });
         });
+
     </script>
 }
