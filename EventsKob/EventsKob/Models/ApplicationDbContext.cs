@@ -8,6 +8,7 @@ namespace EventsKob.Models
         public DbSet<Event> Events { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Attendance> Attendances { get; set; }
+        public DbSet<Follow> Follows { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

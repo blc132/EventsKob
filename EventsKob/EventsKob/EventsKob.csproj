@@ -236,9 +236,13 @@
     <Compile Include="Migrations\201808292011417_AddAttendance.Designer.cs">
       <DependentUpon>201808292011417_AddAttendance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808300859316_AddFollow.cs" />
+    <Compile Include="Migrations\201808300859316_AddFollow.Designer.cs">
+      <DependentUpon>201808300859316_AddFollow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Attendance.cs" />
-    <Compile Include="Models\Follows.cs" />
+    <Compile Include="Models\Follow.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
@@ -362,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808292011417_AddAttendance.resx">
       <DependentUpon>201808292011417_AddAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808300859316_AddFollow.resx">
+      <DependentUpon>201808300859316_AddFollow.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
