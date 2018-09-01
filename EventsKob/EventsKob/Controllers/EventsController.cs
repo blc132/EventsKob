@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -38,7 +38,7 @@ namespace EventsKob.Controllers
             };
             _context.Events.Add((eventToAdd));
             _context.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Mine", "Events");
         }
 
         public ActionResult Create()
@@ -48,6 +48,17 @@ namespace EventsKob.Controllers
                 Genres = _context.Genres.ToList()
             };
             return View(viewModel);
+        }
+
+        [Authorize]
+        public ActionResult Mine()
+        {
+            var userId = User.Identity.GetUserId();
+            var events = _context.Events
+                .Where(e => e.EventMakerId == userId && e.DateTime > DateTime.Now)
+                .Include(g => g.Genre).ToList();
+
+            return View(events);
         }
 
         [Authorize]
