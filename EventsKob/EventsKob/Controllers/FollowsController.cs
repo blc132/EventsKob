@@ -1,11 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 using EventsKob.Dtos;
 using EventsKob.Models;
+using EventsKob.ViewModels;
 using Microsoft.AspNet.Identity;
 
 namespace EventsKob.Controllers
@@ -19,7 +21,7 @@ namespace EventsKob.Controllers
             _context = new ApplicationDbContext();
         }
 
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public IHttpActionResult Follow(FollowsDto dto)
         {
             var userId = User.Identity.GetUserId();
@@ -43,5 +45,4 @@ namespace EventsKob.Controllers
             return Ok();
         }
     }
-
 }

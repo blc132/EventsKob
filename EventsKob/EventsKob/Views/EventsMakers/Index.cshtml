@@ -1,0 +1,10 @@
+﻿@model  IEnumerable<EventsKob.Models.ApplicationUser>
+
+<h1>Who I Follow</h1>
+<ul>
+    @foreach (var eventMaker in Model)
+    {
+        <li>@eventMaker.Name</li>
+    }
+</ul>
+
