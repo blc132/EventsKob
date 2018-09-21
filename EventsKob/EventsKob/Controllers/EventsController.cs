@@ -18,6 +18,17 @@ namespace EventsKob.Controllers
         }
 
         [Authorize]
+        public ActionResult Create()
+        {
+            var viewModel = new EventFormViewModel
+            {
+                Genres = _context.Genres.ToList(),
+                Heading = "Add an Event"
+            };
+            return View("EventForm", viewModel);
+        }
+
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(EventFormViewModel viewModel)
@@ -25,7 +36,7 @@ namespace EventsKob.Controllers
             if (!ModelState.IsValid)
             {
                 viewModel.Genres = _context.Genres.ToList();
-                return View("Create", viewModel);
+                return View("EventForm", viewModel);
             }
 
             var eventMakerId = User.Identity.GetUserId();
@@ -41,13 +52,46 @@ namespace EventsKob.Controllers
             return RedirectToAction("Mine", "Events");
         }
 
-        public ActionResult Create()
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(EventFormViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                viewModel.Genres = _context.Genres.ToList();
+                return View("EventForm", viewModel);
+            }
+
+            var eventMakerId = User.Identity.GetUserId();
+            var eventToEdit = _context.Events.Single(e => e.Id == viewModel.Id && e.EventMakerId == eventMakerId);
+
+            eventToEdit.Venue = viewModel.Venue;
+            eventToEdit.DateTime = viewModel.GetDateTime();
+            eventToEdit.GenreId = viewModel.Genre;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Mine", "Events");
+        }
+
+        [Authorize]
+        public ActionResult Edit(int id)
+        {
+            var userId = User.Identity.GetUserId();
+            var _event = _context.Events.Single(e => e.Id == id && e.EventMakerId == userId);
+
             var viewModel = new EventFormViewModel
             {
-                Genres = _context.Genres.ToList()
+                Heading = "Edit an Event",
+                Id = _event.Id,
+                Genres = _context.Genres.ToList(),
+                Date = _event.DateTime.ToString("d MMM yyyy"),
+                Time = _event.DateTime.ToString("HH:mm"),
+                Genre = _event.GenreId,
+                Venue = _event.Venue
             };
-            return View(viewModel);
+            return View("EventForm", viewModel);
         }
 
         [Authorize]

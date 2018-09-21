@@ -24,6 +24,11 @@
                 <span class="genre">
                     @eventModel.Genre.Name
                 </span>
+                <div class = "actions" >
+                    <a href = "@Url.Action("Edit", "Events", new {id = eventModel.Id})" >
+                        Edit
+                    </a>
+                </div>
             </div>
         </li>
 

@@ -139,3 +139,12 @@ a:hover, a:focus {
     font-size: 14px;
     display: block;
 }
+
+.events > li .actions {
+    font-size: 15px;
+    display: none;
+}
+
+.events > li:hover .actions {
+    display: block;
+}
