@@ -6,6 +6,8 @@ namespace EventsKob.Models
     public class Event
     {
         public int Id { get; set; }
+
+        public bool IsCanceled { get; set; }
         
         public ApplicationUser EventMaker { get; set; }
 
