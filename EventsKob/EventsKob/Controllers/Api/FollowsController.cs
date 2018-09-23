@@ -8,7 +8,7 @@ namespace EventsKob.Controllers.Api
 {
     public class FollowsController : ApiController
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public FollowsController()
         {

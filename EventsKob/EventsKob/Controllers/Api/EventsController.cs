@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Linq;
 using System.Web.Http;
 using EventsKob.Models;
 using Microsoft.AspNet.Identity;
@@ -12,7 +8,7 @@ namespace EventsKob.Controllers.Api
     [Authorize]
     public class EventsController : ApiController
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public EventsController()
         {

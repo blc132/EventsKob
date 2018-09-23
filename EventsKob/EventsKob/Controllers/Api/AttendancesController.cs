@@ -9,7 +9,7 @@ namespace EventsKob.Controllers.Api
     [Authorize]
     public class AttendancesController : ApiController
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public AttendancesController()
         {

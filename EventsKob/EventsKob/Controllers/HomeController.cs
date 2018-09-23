@@ -9,7 +9,7 @@ namespace EventsKob.Controllers
 {
     public class HomeController : Controller
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public HomeController()
         {
