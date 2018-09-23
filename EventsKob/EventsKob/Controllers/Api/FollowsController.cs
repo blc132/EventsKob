@@ -1,16 +1,10 @@
-﻿using System;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Linq;
 using System.Web.Http;
-using System.Web.Mvc;
 using EventsKob.Dtos;
 using EventsKob.Models;
-using EventsKob.ViewModels;
 using Microsoft.AspNet.Identity;
 
-namespace EventsKob.Controllers
+namespace EventsKob.Controllers.Api
 {
     public class FollowsController : ApiController
     {

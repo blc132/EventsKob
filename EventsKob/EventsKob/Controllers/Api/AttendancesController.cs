@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Linq;
 using System.Web.Http;
 using EventsKob.Dtos;
 using EventsKob.Models;
 using Microsoft.AspNet.Identity;
 
-namespace EventsKob.Controllers
+namespace EventsKob.Controllers.Api
 {
     [Authorize]
     public class AttendancesController : ApiController

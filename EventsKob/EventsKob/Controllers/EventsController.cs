@@ -79,7 +79,8 @@ namespace EventsKob.Controllers
         public ActionResult Edit(int id)
         {
             var userId = User.Identity.GetUserId();
-            var _event = _context.Events.Single(e => e.Id == id && e.EventMakerId == userId);
+            var _event = _context.Events.Single(e => e.Id == id &&
+                                                     e.EventMakerId == userId);
 
             var viewModel = new EventFormViewModel
             {
@@ -99,7 +100,9 @@ namespace EventsKob.Controllers
         {
             var userId = User.Identity.GetUserId();
             var events = _context.Events
-                .Where(e => e.EventMakerId == userId && e.DateTime > DateTime.Now)
+                .Where(e => e.EventMakerId == userId &&
+                            e.DateTime > DateTime.Now &&
+                            e.IsCanceled == false)
                 .Include(g => g.Genre).ToList();
 
             return View(events);

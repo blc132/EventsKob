@@ -21,7 +21,8 @@ namespace EventsKob.Controllers
             var upcomingEvents = _context.Events
                 .Include(e => e.EventMaker)
                 .Include(g => g.Genre)
-                .Where(g => g.DateTime > DateTime.Now);
+                .Where(e => e.DateTime > DateTime.Now &&
+                            e.IsCanceled == false);
 
             var model = new EventsViewModel()
             {

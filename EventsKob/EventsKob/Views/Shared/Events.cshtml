@@ -18,6 +18,12 @@
             <div class="details">
                 <span class="eventMaker">
                     @eventModel.EventMaker.Name
+                    
+                    @if (eventModel.IsCanceled)
+                    {
+                        <span class="label label-warning">Canceled</span>
+                    }
+
                     @if (@Model.ShowActions)
                     {
                         <button data-eventMaker-id="@eventModel.EventMakerId" class="btn btn-default btn-xs js-toggle-follow">Follow</button>
@@ -27,7 +33,7 @@
                 <span class="genre">
                     @eventModel.Genre.Name
                 </span>
-                @if (@Model.ShowActions)
+                @if (@Model.ShowActions && @eventModel.IsCanceled == false)
                 {
                     <button data-event-id="@eventModel.Id" class="btn btn-default btn-sm js-toggle-attendance">Going ?</button>
                 }
