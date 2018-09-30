@@ -64,12 +64,9 @@ namespace EventsKob.Controllers
             }
 
             var eventMakerId = User.Identity.GetUserId();
-            var eventToEdit = _context.Events.Single(e => e.Id == viewModel.Id && e.EventMakerId == eventMakerId);
+            var eventToUpdate = _context.Events.Single(e => e.Id == viewModel.Id && e.EventMakerId == eventMakerId);
 
-            eventToEdit.Venue = viewModel.Venue;
-            eventToEdit.DateTime = viewModel.GetDateTime();
-            eventToEdit.GenreId = viewModel.Genre;
-
+            eventToUpdate.Update(viewModel.GetDateTime(), viewModel.Venue, viewModel.Genre);
             _context.SaveChanges();
 
             return RedirectToAction("Mine", "Events");

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using EventsKob.ViewModels;
 
 namespace EventsKob.Models
 {
@@ -38,8 +39,19 @@ namespace EventsKob.Models
         public void Cancel()
         {
             IsCanceled = true;
+            var notification = Notification.EventCanceled(this);
+            foreach (var attendee in Attendances.Select(a => a.Attendee))
+            {
+                attendee.Notify(notification);
+            }
+        }
 
-            var notification = new Notification(this, NotificationType.EventCanceled);
+        public void Update(DateTime dateTime, string venue, int genre)
+        {
+            var notification = Notification.EventUpdated(this, DateTime, Venue );
+            Venue = venue;
+            DateTime = dateTime;
+            GenreId = genre;
 
             foreach (var attendee in Attendances.Select(a => a.Attendee))
             {

@@ -12,20 +12,42 @@ namespace EventsKob.Models
         public string OriginalVenue { get; set; }
 
         [Required]
-        public Event Event { get; set; }
+        public Event Event { get; private set; }
 
         protected Notification()
         {
         }
 
-        public Notification(Event _event, NotificationType type)
+        private Notification(Event _event, NotificationType type)
         {
-            if(_event == null)
-                throw new ArgumentNullException("event");
-
-            Event = _event;
+            Event = _event ?? throw new ArgumentNullException("event");
             Type = type;
             DateTime = DateTime.Now;
         }
+
+        private Notification(Event _event, NotificationType type, DateTime? originalDateTime, string originalVenue)
+        {
+            Event = _event ?? throw new ArgumentNullException("_event");
+            Type = type;
+            DateTime = DateTime.Now;
+            OriginalDateTime = originalDateTime;
+            OriginalVenue = originalVenue;
+        }
+
+        public static Notification EventCreated(Event eventCreated)
+        {
+            return new Notification(eventCreated, NotificationType.EventCreated);
+        }
+
+        public static Notification EventUpdated(Event eventUpdated, DateTime originalDateTime, string originalVenue)
+        {
+            return new Notification(eventUpdated, NotificationType.EventCreated, originalDateTime, originalVenue);
+        }
+
+        public static Notification EventCanceled(Event eventCanceled)
+        {
+            return new Notification(eventCanceled, NotificationType.EventCanceled);
+        }
+
     }
 }
