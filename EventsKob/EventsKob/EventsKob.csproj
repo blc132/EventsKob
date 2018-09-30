@@ -248,9 +248,16 @@
     <Compile Include="Migrations\201809231857126_AddIsCanceledEvent.Designer.cs">
       <DependentUpon>201809231857126_AddIsCanceledEvent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809300547359_AddNotification.cs" />
+    <Compile Include="Migrations\201809300547359_AddNotification.Designer.cs">
+      <DependentUpon>201809300547359_AddNotification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\Follow.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\NotificationType.cs" />
+    <Compile Include="Models\UserNotification.cs" />
     <Compile Include="ViewModels\EventsViewModel.cs" />
     <Compile Include="ViewModels\FollowingViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
@@ -385,6 +392,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809231857126_AddIsCanceledEvent.resx">
       <DependentUpon>201809231857126_AddIsCanceledEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809300547359_AddNotification.resx">
+      <DependentUpon>201809300547359_AddNotification.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

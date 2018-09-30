@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace EventsKob.Models
 {
@@ -7,8 +10,8 @@ namespace EventsKob.Models
     {
         public int Id { get; set; }
 
-        public bool IsCanceled { get; set; }
-        
+        public bool IsCanceled { get; private set; }
+
         public ApplicationUser EventMaker { get; set; }
 
         [Required]
@@ -25,5 +28,23 @@ namespace EventsKob.Models
         [Required]
         public int GenreId { get; set; }
 
+        public ICollection<Attendance> Attendances { get; private set; }
+
+        public Event()
+        {
+            Attendances = new Collection<Attendance>();
+        }
+
+        public void Cancel()
+        {
+            IsCanceled = true;
+
+            var notification = new Notification(this, NotificationType.EventCanceled);
+
+            foreach (var attendee in Attendances.Select(a => a.Attendee))
+            {
+                attendee.Notify(notification);
+            }
+        }
     }
 }

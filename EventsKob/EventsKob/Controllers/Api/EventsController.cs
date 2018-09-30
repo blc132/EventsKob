@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Http;
 using EventsKob.Models;
 using Microsoft.AspNet.Identity;
+using System.Data.Entity;
 
 namespace EventsKob.Controllers.Api
 {
@@ -19,16 +21,17 @@ namespace EventsKob.Controllers.Api
         public IHttpActionResult Cancel(int id)
         {
             var userId = User.Identity.GetUserId();
-            var eventToCancel = _context.Events.Single(e => e.Id == id && e.EventMakerId == userId);
+            var eventToCancel = _context.Events
+                .Include(e => e.Attendances.Select(a => a.Attendee))
+                .Single(e => e.Id == id && e.EventMakerId == userId);
 
             if (eventToCancel.IsCanceled)
                 return NotFound();
 
-            eventToCancel.IsCanceled = true;
+            eventToCancel.Cancel();
             _context.SaveChanges();
 
             return Ok();
-
         }
     }
 }
